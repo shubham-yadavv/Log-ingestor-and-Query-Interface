@@ -1,0 +1,45 @@
+version: "3.1"
+
+services:
+  log-ingestor:
+    build:
+      context: ./log-ingestor
+      dockerfile: Dockerfile
+    container_name: log-ingestor
+    environment:
+      - DB_HOST=postgresdb
+      - DB_USER=shubham
+      - DB_PASSWORD=jarvis
+      - DB_NAME=logsdb
+      - DB_SSL_MODE=disable
+      - AMQP_URL=amqp://rabbitmq:5672
+    depends_on:
+      - postgresdb 
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./log-ingestor:/go/src/app
+
+  postgresdb:
+    container_name: postgresdb
+    image: postgres
+    restart: always
+    privileged: true
+    environment:
+      - POSTGRES_USER=shubham
+      - POSTGRES_PASSWORD=jarvis
+      - POSTGRES_DB=logsdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  
+    ports:
+      - 5432:5432
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.11-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  postgres_data: 
