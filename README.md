@@ -1,5 +1,7 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/2sZOX9xt)
 # Log Ingestor and Query Interface
+
+
+![Sys design](./images/system-design.png)
 
 
 ## Description
@@ -98,10 +100,6 @@ Enter parent resource ID (optional) []:
 Enter start date (optional, format: YYYY-MM-DD) []:
 Enter end date (optional, format: YYYY-MM-DD) []:
 ```
-
-## System Design
-
-![Sys design](./images/system-design.png)
 
 
 ## Scope For Improvement
